@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 	var i *int
@@ -31,6 +34,8 @@ func main() {
 	iAuth.login("admin@admin.com", "password")
 	iAuth.logout()
 
+	fmt.Println(errors.New("failed to load data"))
+
 }
 
 type Counter struct {
@@ -58,4 +63,8 @@ func (Auth) logout() {
 type IAuth interface {
 	login(string, string) bool
 	logout()
+}
+
+func Error() string {
+	return "somethings went wrong"
 }
